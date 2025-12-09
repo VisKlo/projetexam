@@ -1,0 +1,115 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  padding: $spacing-sm;
+  
+  @include mobile-first($breakpoint-sm) {
+    min-height: 60vh;
+    padding: $spacing-lg;
+  }
+}
+
+.login-container {
+  background: $white;
+  padding: $spacing-xl;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-xl;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid rgba($text-light, 0.1);
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-2xl;
+  }
+  
+  h2 {
+    margin-bottom: $spacing-xl;
+    text-align: center;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-color;
+    letter-spacing: -0.02em;
+    
+    @include mobile-first($breakpoint-sm) {
+      font-size: $font-size-xxl;
+      margin-bottom: $spacing-2xl;
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-sm;
+  
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: $font-weight-medium;
+  }
+  
+  input {
+    @include accessible-form-input;
+  }
+}
+
+.btn-primary {
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: $white;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  margin-top: $spacing-md;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: $shadow-md;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    background: linear-gradient(135deg, $primary-light 0%, $primary-color 100%);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: $shadow-sm;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.3), $shadow-md;
+  }
+}
+
+.error-message {
+  background: linear-gradient(135deg, rgba($error-color, 0.1) 0%, rgba($error-color, 0.05) 100%);
+  color: $error-color;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  margin-bottom: $spacing-md;
+  border: 1px solid rgba($error-color, 0.2);
+  font-weight: $font-weight-medium;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: $spacing-sm;
+  
+  a {
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+  }
+}
+

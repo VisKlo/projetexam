@@ -1,0 +1,126 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.toast {
+  position: relative;
+  min-width: 280px;
+  max-width: 100%;
+  background: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-xl;
+  animation: slideIn 0.3s ease-out;
+  border-left: 4px solid;
+  margin-bottom: $spacing-sm;
+  border: 1px solid rgba($text-light, 0.1);
+  backdrop-filter: blur(10px);
+  
+  @include mobile-first($breakpoint-sm) {
+    min-width: 320px;
+    max-width: 500px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-success {
+  border-left-color: $success-color;
+}
+
+.toast-error {
+  border-left-color: $error-color;
+}
+
+.toast-warning {
+  border-left-color: $warning-color;
+}
+
+.toast-info {
+  border-left-color: $primary-color;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm;
+  gap: $spacing-sm;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-md;
+    gap: 12px;
+  }
+}
+
+.toast-icon {
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+  
+  @include mobile-first($breakpoint-sm) {
+    font-size: 20px;
+  }
+}
+
+.toast-message {
+  flex: 1;
+  color: $text-color;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+  white-space: pre-line;
+  
+  @include mobile-first($breakpoint-sm) {
+    font-size: $font-size-sm;
+  }
+}
+
+.toast-close {
+  @include accessible-button;
+  background: none;
+  font-size: $font-size-lg;
+  color: $text-light;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $text-color;
+  }
+}
+
+.toast-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  max-height: calc(100vh - 20px);
+  overflow-y: auto;
+  pointer-events: none;
+  max-width: calc(100vw - 20px);
+  
+  @include mobile-first($breakpoint-sm) {
+    top: 20px;
+    right: 20px;
+    left: auto;
+    max-width: none;
+  }
+  
+  > * {
+    pointer-events: auto;
+  }
+}

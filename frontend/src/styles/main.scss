@@ -1,0 +1,72 @@
+// Fichier principal SCSS - Compilé et compressé pour éco-conception
+@import 'variables';
+@import 'mixins';
+
+// Reset et styles de base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $light-bg;
+  color: $text-color;
+  line-height: 1.6;
+  @include accessible-typography($font-size-base);
+  
+  // Amélioration de la lisibilité
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+}
+
+code {
+  font-family: $font-family-monospace;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  @include accessible-button;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+// Styles pour les champs en erreur
+input.error,
+textarea.error,
+select.error {
+  border-color: #ef4444;
+  border-width: 2px;
+  
+  &:focus {
+    outline-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+}
+
+// Améliorations responsive globales (mobile-first)
+// Styles de base pour mobile, puis améliorations pour tablettes et desktop
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@include mobile-first($breakpoint-sm) {
+  body {
+    font-size: $font-size-base;
+  }
+}
+

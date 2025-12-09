@@ -1,0 +1,139 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.artisan-dashboard {
+  padding: $spacing-sm 0;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-lg 0;
+  }
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+  
+  @include mobile-first($breakpoint-sm) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.product-form {
+  @include card;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+  
+  h2 {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-sm;
+  
+  @include mobile-first($breakpoint-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-sm;
+  
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: $font-weight-medium;
+  }
+  
+  input,
+  textarea,
+  select {
+    @include accessible-form-input;
+  }
+}
+
+.dashboard-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  
+  @include mobile-first($breakpoint-sm) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.dashboard-section {
+  @include card;
+  padding: $spacing-md;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+  
+  h2 {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.products-list,
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.product-item,
+.order-item {
+  padding: $spacing-sm;
+  background-color: #f9f9f9;
+  border-radius: $border-radius-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  
+  @include mobile-first($breakpoint-sm) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  h3 {
+    margin-bottom: $spacing-xs;
+  }
+}
+
+.status-badge {
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  
+  &.active {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  &.inactive {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+}
+
+.order-actions {
+  select {
+    @include accessible-form-input;
+    padding: $spacing-xs;
+  }
+}
+

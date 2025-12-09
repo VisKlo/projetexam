@@ -1,0 +1,221 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.home {
+  padding: $spacing-sm 0;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-lg 0;
+  }
+}
+
+.hero {
+  text-align: center;
+  padding: $spacing-2xl $spacing-md;
+  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 50%, $accent-color 100%);
+  color: $white;
+  border-radius: $border-radius-xl;
+  margin-bottom: $spacing-2xl;
+  position: relative;
+  overflow: hidden;
+  box-shadow: $shadow-xl;
+  
+  // Effet de profondeur avec overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba($white, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-3xl $spacing-xl;
+    margin-bottom: $spacing-3xl;
+  }
+  
+  h1 {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-md;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+    
+    @include mobile-first($breakpoint-sm) {
+      font-size: $font-size-xxl;
+      margin-bottom: $spacing-lg;
+    }
+    
+    @include mobile-first($breakpoint-md) {
+      font-size: 3rem;
+    }
+  }
+  
+  p {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-lg;
+    opacity: 0.95;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    
+    @include mobile-first($breakpoint-sm) {
+      font-size: $font-size-md;
+      margin-bottom: $spacing-xl;
+    }
+  }
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md $spacing-xl;
+  background-color: $white;
+  color: $primary-color;
+  border-radius: $border-radius-full;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-base;
+  transition: all $transition-base;
+  box-shadow: $shadow-lg;
+  position: relative;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-md ($spacing-xl * 1.5);
+    font-size: $font-size-md;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-xl;
+    background-color: rgba($white, 0.95);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: $shadow-md;
+  }
+  
+  &:focus {
+    outline: 2px solid rgba($white, 0.8);
+    outline-offset: 4px;
+  }
+}
+
+.featured-products {
+  h2 {
+    margin-bottom: $spacing-md;
+    font-size: $font-size-xl;
+    
+    @include mobile-first($breakpoint-sm) {
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-xxl;
+    }
+  }
+}
+
+.products-grid {
+  @include responsive-grid(140px);
+  
+  @include mobile-first($breakpoint-sm) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  @include mobile-first($breakpoint-md) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+.product-card {
+  @include card;
+  border: 1px solid rgba($text-light, 0.1);
+  overflow: hidden;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+    border-color: rgba($primary-color, 0.2);
+  }
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  
+  @include mobile-first($breakpoint-sm) {
+    height: 200px;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    loading: lazy;
+  }
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  
+  @include mobile-first($breakpoint-sm) {
+    font-size: 4rem;
+  }
+}
+
+.product-info {
+  padding: 0.75rem;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-sm;
+  }
+  
+  h3 {
+    margin-bottom: $spacing-xs;
+    color: $text-color;
+  }
+}
+
+.product-price {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $primary-color;
+  margin-bottom: $spacing-xs;
+  
+  @include mobile-first($breakpoint-sm) {
+    font-size: $font-size-lg;
+  }
+}
+
+.product-artisan {
+  color: $text-light;
+  font-size: $font-size-sm;
+}
+
+.loading {
+  text-align: center;
+  padding: $spacing-lg;
+  font-size: $font-size-md;
+  
+  @include mobile-first($breakpoint-sm) {
+    font-size: $font-size-lg;
+  }
+}
+

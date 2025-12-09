@@ -1,0 +1,84 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.profile-page {
+  padding: $spacing-sm 0;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-lg 0;
+  }
+  
+  h1 {
+    margin-bottom: $spacing-md;
+    font-size: $font-size-xl;
+    
+    @include mobile-first($breakpoint-sm) {
+      font-size: $font-size-xxl;
+      margin-bottom: $spacing-lg;
+    }
+  }
+}
+
+.profile-form {
+  @include card;
+  padding: $spacing-md;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+  
+  h2 {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-sm;
+  
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: $font-weight-medium;
+  }
+  
+  input,
+  textarea {
+    @include accessible-form-input;
+  }
+}
+
+.btn-primary {
+  padding: $spacing-sm $spacing-md;
+  background-color: $primary-color;
+  color: $white;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  @include accessible-button;
+  
+  &:hover:not(:disabled) {
+    background-color: #5568d3;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: $spacing-sm;
+  border-radius: $border-radius-sm;
+  margin-bottom: $spacing-sm;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: $spacing-sm;
+  border-radius: $border-radius-sm;
+  margin-bottom: $spacing-sm;
+}
+

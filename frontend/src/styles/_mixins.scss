@@ -1,0 +1,107 @@
+// Mixins SCSS pour réutilisabilité et éco-conception
+
+// Media queries mobile-first
+@mixin mobile-first($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Mixin pour les boutons accessibles
+@mixin accessible-button {
+  min-height: 44px; // Taille minimale pour accessibilité tactile
+  min-width: 44px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: background-color $transition-base;
+  
+  &:focus {
+    outline: 2px solid $primary-color;
+    outline-offset: 2px;
+  }
+}
+
+// Mixin pour les cartes modernes
+@mixin card {
+  background: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid rgba($text-light, 0.08);
+  transition: all $transition-base;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($primary-color, 0.15);
+  }
+}
+
+// Mixin pour les grilles responsives
+@mixin responsive-grid($min-width: 250px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: $spacing-lg;
+  
+  @include mobile-first($breakpoint-md) {
+    gap: $spacing-lg;
+  }
+  
+  @include mobile-first($breakpoint-sm) {
+    gap: $spacing-md;
+  }
+}
+
+// Mixin pour le conteneur principal
+@mixin main-container {
+  max-width: $breakpoint-lg;
+  width: 100%;
+  margin: 0 auto;
+  padding: $spacing-sm;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-md;
+  }
+  
+  @include mobile-first($breakpoint-md) {
+    padding: $spacing-lg;
+  }
+}
+
+// Mixin pour la typographie accessible
+@mixin accessible-typography($size: $font-size-base, $weight: $font-weight-normal) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: 1.5; // Ratio optimal pour accessibilité
+  color: $text-color;
+}
+
+// Mixin pour les formulaires accessibles et modernes
+@mixin accessible-form-input {
+  width: 100%;
+  padding: $spacing-md;
+  border: 2px solid rgba($text-light, 0.2);
+  border-radius: $border-radius-md;
+  font-family: inherit;
+  font-size: $font-size-base;
+  background-color: $white;
+  transition: all $transition-fast;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+  
+  &::placeholder {
+    color: $text-muted;
+  }
+  
+  &:disabled {
+    background-color: $light-bg-alt;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+

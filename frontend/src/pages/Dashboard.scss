@@ -1,0 +1,50 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.dashboard-page {
+  padding: $spacing-sm 0;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-lg 0;
+  }
+  
+  h1 {
+    margin-bottom: $spacing-md;
+    font-size: $font-size-xl;
+    
+    @include mobile-first($breakpoint-sm) {
+      font-size: $font-size-xxl;
+      margin-bottom: $spacing-lg;
+    }
+  }
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  
+  @include mobile-first($breakpoint-sm) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.stat-card {
+  @include card;
+  padding: $spacing-md;
+  text-align: center;
+  
+  h3 {
+    font-size: $font-size-lg;
+    color: $text-light;
+    margin-bottom: $spacing-xs;
+  }
+  
+  p {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+  }
+}
+

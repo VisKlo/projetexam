@@ -1,0 +1,26 @@
+@import './styles/variables';
+@import './styles/mixins';
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  @include main-container;
+  
+  // Mobile-first: styles de base pour mobile
+  padding: $spacing-sm;
+  
+  // Améliorations pour tablettes et desktop
+  @include mobile-first($breakpoint-sm) {
+    padding: $spacing-md;
+  }
+  
+  @include mobile-first($breakpoint-md) {
+    padding: $spacing-lg;
+  }
+}
+

@@ -1,0 +1,35 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.footer {
+  background: linear-gradient(135deg, $dark-color 0%, $dark-lighter 100%);
+  color: rgba($white, 0.8);
+  padding: $spacing-lg 0;
+  margin-top: auto;
+  border-top: 1px solid rgba($white, 0.1);
+}
+
+.footer-container {
+  max-width: $breakpoint-lg;
+  margin: 0 auto;
+  padding: 0 $spacing-sm;
+  
+  @include mobile-first($breakpoint-sm) {
+    padding: 0 $spacing-md;
+  }
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-copyright {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: rgba($white, 0.7);
+  
+  @include mobile-first($breakpoint-sm) {
+    font-size: $font-size-base;
+  }
+}
+
