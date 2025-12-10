@@ -28,10 +28,13 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Si erreur 401 (non autorisé), rediriger vers login
+    // Si erreur 401 (non autorisé ou token expiré), nettoyer et rediriger
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
-      window.location.href = '/login';
+      // Ne pas rediriger si on est déjà sur la page de login
+      if (!window.location.pathname.includes('/login')) {
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }
